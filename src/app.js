@@ -18,11 +18,7 @@ const viewRoutes = require('./routes/v1/view.route');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
 
-// const connectRabbitMQ = require("./config/rabbitmq")
-
 const app = express();
-
-// global.rabbitMQ = connectRabbitMQ()
 
 if (config.env !== 'test') {
   app.use(morgan.successHandler);

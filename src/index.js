@@ -12,6 +12,7 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   });
 });
 
+// Day la redis
 //redis cache
 // mongoose.Query.prototype.cache = function (time = 3600) {
 //   this.cache = true;

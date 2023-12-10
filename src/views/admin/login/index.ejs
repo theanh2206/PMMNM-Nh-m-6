@@ -244,11 +244,11 @@
             console.log(data.code);
             if (data.code == 200) window.location.href = '/admin/dashboard';
             else {
-              alert('Tài khoản hoặc mật khẩu sai');
+              alert('Tài khoản hoặc mật khẩu không đúng');
             }
           })
           .catch((error) => {
-            alert('Tài khoản hoặc mật khẩu sai');
+            alert('Tài khoản hoặc mật khẩu không đúng');
           });
       });
     </script>

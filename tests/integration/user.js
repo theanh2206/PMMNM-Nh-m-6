@@ -349,7 +349,7 @@ describe('User routes', () => {
       expect(res.body.results[0].id).toBe(admin._id.toHexString());
     });
   });
-
+//check user data
   describe('GET /v1/users/:userId', () => {
     test('should return 200 and the user object if data is ok', async () => {
       await insertUsers([userOne]);

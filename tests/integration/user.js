@@ -305,7 +305,7 @@ describe('User routes', () => {
         expect(res.body.results[index].id).toBe(user._id.toHexString());
       });
     });
-
+//check limit paramm
     test('should limit returned array if limit param is specified', async () => {
       await insertUsers([userOne, userTwo, admin]);
 

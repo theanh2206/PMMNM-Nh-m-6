@@ -45,7 +45,7 @@ describe('User routes', () => {
       expect(dbUser.password).not.toBe(newUser.password);
       expect(dbUser).toMatchObject({ name: newUser.name, email: newUser.email, role: newUser.role, isEmailVerified: false });
     });
-//insert user
+//insert users
     test('should be able to create an admin as well', async () => {
       await insertUsers([admin]);
       newUser.role = 'admin';

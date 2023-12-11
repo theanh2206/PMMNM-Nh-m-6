@@ -6,7 +6,7 @@ const setupTestDB = require('../utils/setupTestDB');
 const { User } = require('../../src/models');
 const { userOne, userTwo, admin, insertUsers } = require('../fixtures/user.fixture');
 const { userOneAccessToken, adminAccessToken } = require('../fixtures/token.fixture');
-
+//setup test
 setupTestDB();
 
 describe('User routes', () => {
@@ -21,7 +21,7 @@ describe('User routes', () => {
         role: 'user',
       };
     });
-
+//test
     test('should return 201 and successfully create new user if data is ok', async () => {
       await insertUsers([admin]);
 

@@ -203,7 +203,7 @@ describe('User routes', () => {
       expect(res.body.results).toHaveLength(1);
       expect(res.body.results[0].id).toBe(userOne._id.toHexString());
     });
-
+//test user filter
     test('should correctly apply filter on role field', async () => {
       await insertUsers([userOne, userTwo, admin]);
 

@@ -6,7 +6,7 @@ const setupTestDB = require('../utils/setupTestDB');
 const { User } = require('../../src/models');
 const { userOne, userTwo, admin, insertUsers } = require('../fixtures/user.fixture');
 const { userOneAccessToken, adminAccessToken } = require('../fixtures/token.fixture');
-
+//setup test
 setupTestDB();
 
 describe('User routes', () => {

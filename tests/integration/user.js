@@ -127,7 +127,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.BAD_REQUEST);
     });
-
+//test to check user or admin
     test('should return 400 error if role is neither user nor admin', async () => {
       await insertUsers([admin]);
       newUser.role = 'invalid';

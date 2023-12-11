@@ -6,7 +6,7 @@ const setupTestDB = require('../utils/setupTestDB');
 const { User } = require('../../src/models');
 const { userOne, userTwo, admin, insertUsers } = require('../fixtures/user.fixture');
 const { userOneAccessToken, adminAccessToken } = require('../fixtures/token.fixture');
-
+//setup test
 setupTestDB();
 
 describe('User routes', () => {
@@ -21,7 +21,7 @@ describe('User routes', () => {
         role: 'user',
       };
     });
-
+//test
     test('should return 201 and successfully create new user if data is ok', async () => {
       await insertUsers([admin]);
 
@@ -45,7 +45,7 @@ describe('User routes', () => {
       expect(dbUser.password).not.toBe(newUser.password);
       expect(dbUser).toMatchObject({ name: newUser.name, email: newUser.email, role: newUser.role, isEmailVerified: false });
     });
-
+//insert users
     test('should be able to create an admin as well', async () => {
       await insertUsers([admin]);
       newUser.role = 'admin';
@@ -65,7 +65,7 @@ describe('User routes', () => {
     test('should return 401 error if access token is missing', async () => {
       await request(app).post('/v1/users').send(newUser).expect(httpStatus.UNAUTHORIZED);
     });
-
+//test insert users
     test('should return 403 error if logged in user is not admin', async () => {
       await insertUsers([userOne]);
 
@@ -75,7 +75,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.FORBIDDEN);
     });
-
+//check email
     test('should return 400 error if email is invalid', async () => {
       await insertUsers([admin]);
       newUser.email = 'invalidEmail';
@@ -97,7 +97,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.BAD_REQUEST);
     });
-
+//check password
     test('should return 400 error if password length is less than 8 characters', async () => {
       await insertUsers([admin]);
       newUser.password = 'passwo1';
@@ -127,7 +127,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.BAD_REQUEST);
     });
-
+//test to check user or admin
     test('should return 400 error if role is neither user nor admin', async () => {
       await insertUsers([admin]);
       newUser.role = 'invalid';

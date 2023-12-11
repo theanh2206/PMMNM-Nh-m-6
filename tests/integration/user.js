@@ -65,7 +65,7 @@ describe('User routes', () => {
     test('should return 401 error if access token is missing', async () => {
       await request(app).post('/v1/users').send(newUser).expect(httpStatus.UNAUTHORIZED);
     });
-
+//test insert users
     test('should return 403 error if logged in user is not admin', async () => {
       await insertUsers([userOne]);
 

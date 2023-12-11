@@ -225,7 +225,7 @@ describe('User routes', () => {
       expect(res.body.results[0].id).toBe(userOne._id.toHexString());
       expect(res.body.results[1].id).toBe(userTwo._id.toHexString());
     });
-
+//check descending sort param
     test('should correctly sort the returned array if descending sort param is specified', async () => {
       await insertUsers([userOne, userTwo, admin]);
 
@@ -271,7 +271,7 @@ describe('User routes', () => {
       expect(res.body.results[1].id).toBe(userOne._id.toHexString());
       expect(res.body.results[2].id).toBe(userTwo._id.toHexString());
     });
-
+//check multiple sorting criteria
     test('should correctly sort the returned array if multiple sorting criteria are specified', async () => {
       await insertUsers([userOne, userTwo, admin]);
 

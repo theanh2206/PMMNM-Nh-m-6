@@ -166,7 +166,7 @@ describe('User routes', () => {
         isEmailVerified: userOne.isEmailVerified,
       });
     });
-//test access token
+//test access
     test('should return 401 if access token is missing', async () => {
       await insertUsers([userOne, userTwo, admin]);
 
@@ -203,7 +203,7 @@ describe('User routes', () => {
       expect(res.body.results).toHaveLength(1);
       expect(res.body.results[0].id).toBe(userOne._id.toHexString());
     });
-
+//test user filter
     test('should correctly apply filter on role field', async () => {
       await insertUsers([userOne, userTwo, admin]);
 

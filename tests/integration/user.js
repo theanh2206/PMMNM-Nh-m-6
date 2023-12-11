@@ -75,7 +75,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.FORBIDDEN);
     });
-
+//check email
     test('should return 400 error if email is invalid', async () => {
       await insertUsers([admin]);
       newUser.email = 'invalidEmail';
@@ -97,7 +97,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.BAD_REQUEST);
     });
-
+//check password
     test('should return 400 error if password length is less than 8 characters', async () => {
       await insertUsers([admin]);
       newUser.password = 'passwo1';

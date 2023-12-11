@@ -166,7 +166,7 @@ describe('User routes', () => {
         isEmailVerified: userOne.isEmailVerified,
       });
     });
-//test access token
+//test access
     test('should return 401 if access token is missing', async () => {
       await insertUsers([userOne, userTwo, admin]);
 

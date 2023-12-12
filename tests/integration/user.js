@@ -436,7 +436,7 @@ describe('User routes', () => {
 
       await request(app).delete(`/v1/users/${userOne._id}`).send().expect(httpStatus.UNAUTHORIZED);
     });
-
+//denied access
     test('should return 403 error if user is trying to delete another user', async () => {
       await insertUsers([userOne, userTwo]);
 

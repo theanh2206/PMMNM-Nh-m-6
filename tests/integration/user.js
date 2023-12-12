@@ -466,7 +466,7 @@ describe('User routes', () => {
         .send()
         .expect(httpStatus.BAD_REQUEST);
     });
-
+//checkout user
     test('should return 404 error if user already is not found', async () => {
       await insertUsers([admin]);
 

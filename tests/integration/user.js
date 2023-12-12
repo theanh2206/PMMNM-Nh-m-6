@@ -395,7 +395,7 @@ describe('User routes', () => {
         .send()
         .expect(httpStatus.OK);
     });
-
+//check user id
     test('should return 400 error if userId is not a valid mongo id', async () => {
       await insertUsers([admin]);
 

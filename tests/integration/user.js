@@ -6,7 +6,7 @@ const setupTestDB = require('../utils/setupTestDB');
 const { User } = require('../../src/models');
 const { userOne, userTwo, admin, insertUsers } = require('../fixtures/user.fixture');
 const { userOneAccessToken, adminAccessToken } = require('../fixtures/token.fixture');
-
+//setup test
 setupTestDB();
 
 describe('User routes', () => {
@@ -21,7 +21,7 @@ describe('User routes', () => {
         role: 'user',
       };
     });
-
+//test
     test('should return 201 and successfully create new user if data is ok', async () => {
       await insertUsers([admin]);
 
@@ -45,7 +45,7 @@ describe('User routes', () => {
       expect(dbUser.password).not.toBe(newUser.password);
       expect(dbUser).toMatchObject({ name: newUser.name, email: newUser.email, role: newUser.role, isEmailVerified: false });
     });
-
+//insert users
     test('should be able to create an admin as well', async () => {
       await insertUsers([admin]);
       newUser.role = 'admin';
@@ -65,7 +65,7 @@ describe('User routes', () => {
     test('should return 401 error if access token is missing', async () => {
       await request(app).post('/v1/users').send(newUser).expect(httpStatus.UNAUTHORIZED);
     });
-
+//test insert users
     test('should return 403 error if logged in user is not admin', async () => {
       await insertUsers([userOne]);
 
@@ -75,7 +75,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.FORBIDDEN);
     });
-
+//check email
     test('should return 400 error if email is invalid', async () => {
       await insertUsers([admin]);
       newUser.email = 'invalidEmail';
@@ -97,7 +97,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.BAD_REQUEST);
     });
-
+//check password
     test('should return 400 error if password length is less than 8 characters', async () => {
       await insertUsers([admin]);
       newUser.password = 'passwo1';
@@ -127,7 +127,7 @@ describe('User routes', () => {
         .send(newUser)
         .expect(httpStatus.BAD_REQUEST);
     });
-
+//test to check user or admin
     test('should return 400 error if role is neither user nor admin', async () => {
       await insertUsers([admin]);
       newUser.role = 'invalid';
@@ -166,7 +166,7 @@ describe('User routes', () => {
         isEmailVerified: userOne.isEmailVerified,
       });
     });
-
+//test access
     test('should return 401 if access token is missing', async () => {
       await insertUsers([userOne, userTwo, admin]);
 
@@ -203,7 +203,7 @@ describe('User routes', () => {
       expect(res.body.results).toHaveLength(1);
       expect(res.body.results[0].id).toBe(userOne._id.toHexString());
     });
-
+//test user filter
     test('should correctly apply filter on role field', async () => {
       await insertUsers([userOne, userTwo, admin]);
 
@@ -225,7 +225,7 @@ describe('User routes', () => {
       expect(res.body.results[0].id).toBe(userOne._id.toHexString());
       expect(res.body.results[1].id).toBe(userTwo._id.toHexString());
     });
-
+//check descending sort param
     test('should correctly sort the returned array if descending sort param is specified', async () => {
       await insertUsers([userOne, userTwo, admin]);
 
@@ -271,7 +271,7 @@ describe('User routes', () => {
       expect(res.body.results[1].id).toBe(userOne._id.toHexString());
       expect(res.body.results[2].id).toBe(userTwo._id.toHexString());
     });
-
+//check multiple sorting criteria
     test('should correctly sort the returned array if multiple sorting criteria are specified', async () => {
       await insertUsers([userOne, userTwo, admin]);
 
@@ -305,7 +305,7 @@ describe('User routes', () => {
         expect(res.body.results[index].id).toBe(user._id.toHexString());
       });
     });
-
+//check limit paramm
     test('should limit returned array if limit param is specified', async () => {
       await insertUsers([userOne, userTwo, admin]);
 
@@ -349,7 +349,7 @@ describe('User routes', () => {
       expect(res.body.results[0].id).toBe(admin._id.toHexString());
     });
   });
-
+//check user data
   describe('GET /v1/users/:userId', () => {
     test('should return 200 and the user object if data is ok', async () => {
       await insertUsers([userOne]);
@@ -375,7 +375,7 @@ describe('User routes', () => {
 
       await request(app).get(`/v1/users/${userOne._id}`).send().expect(httpStatus.UNAUTHORIZED);
     });
-
+//user conflict
     test('should return 403 error if user is trying to get another user', async () => {
       await insertUsers([userOne, userTwo]);
 

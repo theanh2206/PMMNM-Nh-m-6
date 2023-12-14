@@ -395,7 +395,7 @@ describe('User routes', () => {
         .send()
         .expect(httpStatus.OK);
     });
-
+//check user id
     test('should return 400 error if userId is not a valid mongo id', async () => {
       await insertUsers([admin]);
 
@@ -436,7 +436,7 @@ describe('User routes', () => {
 
       await request(app).delete(`/v1/users/${userOne._id}`).send().expect(httpStatus.UNAUTHORIZED);
     });
-
+//denied access
     test('should return 403 error if user is trying to delete another user', async () => {
       await insertUsers([userOne, userTwo]);
 
@@ -466,7 +466,7 @@ describe('User routes', () => {
         .send()
         .expect(httpStatus.BAD_REQUEST);
     });
-
+//checkout user
     test('should return 404 error if user already is not found', async () => {
       await insertUsers([admin]);
 
